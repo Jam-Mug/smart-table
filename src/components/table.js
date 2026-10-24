@@ -45,14 +45,15 @@ export function initTable(settings, onAction) {
         if (row.elements[key]) {
           if (["INPUT", "SELECT"].includes(row.elements[key].tagName)) {
             row.elements[key].value = item[key];
-          } else { row.elements[key].textContent = item[key];
+          } else {
+            row.elements[key].textContent = item[key];
           }
         }
-      })
+      });
       return row.container;
     });
     root.elements.rows.replaceChildren(...nextRows);
-  }
+  };
 
   return { ...root, render };
 }
