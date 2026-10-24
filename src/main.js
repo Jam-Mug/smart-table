@@ -30,8 +30,8 @@ function collectState() {
     // расширьте существующий return вот так
     ...state,
     rowsPerPage,
-    total,
     page,
+    total,
   };
 }
 
