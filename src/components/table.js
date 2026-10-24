@@ -28,7 +28,7 @@ export function initTable(settings, onAction) {
   });
 
   root.container.addEventListener("reset", () => {
-    setTimeout(onAction, 0);
+    setTimeout(onAction);
   });
 
   root.container.addEventListener("submit", (e) => {
@@ -46,12 +46,13 @@ export function initTable(settings, onAction) {
         if (row.elements[key]) {
           row.elements[key].textContent = item[key];
         }
+        
       });
 
       return row.container;
     });
     root.elements.rows.replaceChildren(...nextRows);
-  };
+  }
 
   return { ...root, render };
 }

@@ -8,6 +8,7 @@ import {processFormData} from "./lib/utils.js";
 
 import {initTable} from "./components/table.js";
 
+// @todo: подключение
 import {initPagination} from "./components/pagination.js";
 
 import {initSorting} from "./components/sorting.js";
@@ -16,7 +17,6 @@ import {initFiltering} from "./components/filtering.js";
 
 import {initSearching} from "./components/searching.js";
 
-// @todo: подключение
 
 
 // Исходные данные используемые в render()
@@ -65,16 +65,7 @@ const sampleTable = initTable({
 
 // @todo: инициализация
 
-const applySearching = initSearching('search');
 
-const applyFiltering = initFiltering(sampleTable.filter.elements, {    // передаём элементы фильтра
-    searchBySeller: indexes.sellers                                    // для элемента с именем searchBySeller устанавливаем массив продавцов
-});
-
-const applySorting = initSorting([        // Нам нужно передать сюда массив элементов, которые вызывают сортировку, чтобы изменять их визуальное представление
-    sampleTable.header.elements.sortByDate,
-    sampleTable.header.elements.sortByTotal
-]);
 
 const applyPagination = initPagination(
     sampleTable.pagination.elements,             // передаём сюда элементы пагинации, найденные в шаблоне
@@ -87,6 +78,18 @@ const applyPagination = initPagination(
         return el;
     }
 );
+
+const applySorting = initSorting([        // Нам нужно передать сюда массив элементов, которые вызывают сортировку, чтобы изменять их визуальное представление
+    sampleTable.header.elements.sortByDate,
+    sampleTable.header.elements.sortByTotal
+]);
+
+
+const applySearching = initSearching('search');
+
+const applyFiltering = initFiltering(sampleTable.filter.elements, {    // передаём элементы фильтра
+    searchBySeller: indexes.sellers                                    // для элемента с именем searchBySeller устанавливаем массив продавцов
+});
 
 
 

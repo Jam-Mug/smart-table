@@ -8,10 +8,10 @@ export function initFiltering(elements, indexes) {
     Object.keys(indexes).forEach((elementName) => {
             elements[elementName].append(
                 ...Object.values(indexes[elementName]).map(name => {
-                        const option = document.createElement('option');
-                        option.value = name;
-                        option.textContent = name;
-                        return option;
+                        const e = document.createElement('option');
+                        e.value = name;
+                        e.textContent = name;
+                        return e;
                     })
             );
         });
@@ -20,13 +20,8 @@ export function initFiltering(elements, indexes) {
         // @todo: #4.2 — обработать очистку поля
         if (action && action.name === 'clear') {
             const input = action.parentElement.querySelector('input');
-            const field = action.dataset.field;
-            if (input) {
-                input.value = '';
-            }
-            if (field) {
-                state[field] = '';
-            }
+            input.value = "";
+            state[action.dataset.field] = "";
         }
 
         // @todo: #4.5 — отфильтровать данные используя компаратор
